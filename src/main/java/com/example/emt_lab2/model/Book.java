@@ -1,12 +1,11 @@
 package com.example.emt_lab2.model;
 
 import lombok.Data;
-import org.hibernate.annotations.Entity;
 
 import javax.persistence.*;
 
 @Data
-
+@Entity
 public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
