@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -24,6 +25,14 @@ public class BookRestController {
     public List<Book> findAll(){
 
         return bookService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Book> getBookById(@PathVariable Long id)
+    {
+        return this.bookService.findById(id)
+                .map(product -> ResponseEntity.ok().body(product))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/add")
@@ -55,7 +64,7 @@ public class BookRestController {
 
     @GetMapping("/categories")
     public List<String> productCategories(){
-        return List.of(Arrays.toString(Category.values()));
+        return Arrays.asList(Stream.of(Category.values()).map(Category::name).toArray(String[]::new).clone());
     }
 
 }

@@ -1,11 +1,13 @@
 package com.example.emt_lab2.service.impl;
 
 import com.example.emt_lab2.model.Author;
+import com.example.emt_lab2.model.Book;
 import com.example.emt_lab2.model.Country;
 import com.example.emt_lab2.repository.AuthorRepository;
 import com.example.emt_lab2.service.AuthorService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -25,5 +27,10 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public Author findById(Long id) {
         return authorRepository.findById(id).orElseThrow(NoSuchElementException::new);
+    }
+
+    @Override
+    public List<Author> findAll() {
+        return authorRepository.findAll();
     }
 }

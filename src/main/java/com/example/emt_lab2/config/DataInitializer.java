@@ -27,10 +27,24 @@ public class DataInitializer {
     public void init(){
         Country country = countryService.create("MKD","Europe");
         Author author = authorService.create("Aleksandra"," Zografska", country);
-        BookDto bookDto = new BookDto("Maliot princ", Category.CLASSICS.toString(),author.getId(),5);
 
+        BookDto bookDto = new BookDto("Book1", Category.CLASSICS.toString(),author.getId(),5);
         bookService.create(bookDto);
-        bookDto = new BookDto("Stradanjata na mladata Zogra", Category.DRAMA.toString(),author.getId(),4);
+        bookDto = new BookDto("Book12", Category.CLASSICS.toString(),author.getId(),5);
+        bookService.create(bookDto);
+
+        bookDto = new BookDto("Book13", Category.THRILLER.toString(),author.getId(),5);
+        bookService.create(bookDto);
+        bookDto = new BookDto("Book14", Category.DRAMA.toString(),author.getId(),5);
+        author = authorService.create("Alex"," Smith", country);
+        bookService.create(bookDto);
+        bookDto = new BookDto("Book15", Category.DRAMA.toString(),author.getId(),4);
+        bookService.create(bookDto);
+        bookDto = new BookDto("Book156", Category.DRAMA.toString(),author.getId(),4);
+        bookService.create(bookDto);
+        bookDto = new BookDto("Book157", Category.DRAMA.toString(),author.getId(),4);
+        bookService.create(bookDto);
+        bookDto = new BookDto("Book158", Category.DRAMA.toString(),author.getId(),4);
         bookService.create(bookDto);
     }
 }
